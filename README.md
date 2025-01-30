@@ -1,0 +1,1 @@
+# rails_custom_auth

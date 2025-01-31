@@ -23,6 +23,6 @@ class UserTest < ActiveSupport::TestCase
     user.password = "hash_one"
 
     assert_not user.valid?
-    assert_equal ["has already been taken"], user.errors[:email]
+    assert_equal [ "has already been taken" ], user.errors[:email]
   end
 end

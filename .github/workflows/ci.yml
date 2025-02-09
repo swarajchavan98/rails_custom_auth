@@ -55,6 +55,10 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
+    env:
+      RAILS_ENV: test
+      RAZORPAY_KEY_ID: dummy_key_id
+      RAZORPAY_KEY_SECRET: dummy_key_secret
 
     services:
       postgres:

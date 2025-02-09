@@ -17,4 +17,8 @@ Rails.application.routes.draw do
   resource :session, only: %i[new create destroy]
   resource :password_reset, only: %i[new create edit update]
   resource :password, only: %i[edit update]
+
+  namespace :subscription do
+    resource :checkout
+  end
 end

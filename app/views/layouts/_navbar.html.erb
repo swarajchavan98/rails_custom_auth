@@ -1,4 +1,4 @@
-<header class="flex justify-between items-center fixed p-4 w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+<header class="flex justify-between items-center dark:text-white fixed p-2 w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
   <div></div>
   <nav class="flex justify-between items-center">
     <ul class="flex justify-center items-center gap-2">
@@ -10,5 +10,7 @@
       <li><%= link_to "Sign out", session_path, data: { turbo_method: :delete } if Current.user %></li>
     </ul>
   </nav>
-  <div></div>
+  <div>
+    <%= render "layouts/shared/theme_toggle" %>
+  </div>
 </header>

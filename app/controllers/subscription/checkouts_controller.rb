@@ -1,6 +1,6 @@
 class Subscription::CheckoutsController < ApplicationController
   before_action :require_authentication
-  layout "payments", only: [:new]
+  layout "payments", only: [ :new ]
 
   def show
   end

@@ -21,9 +21,10 @@
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= javascript_include_tag "theme_toggle.js" %>
   </head>
 
-  <body>
+  <body class="dark:bg-black" data-controller="dark-mode">
     <%= render partial: "layouts/navbar" %>
     <main class="container mx-auto mt-28 p-4 flex">
       <div class="fixed top-20 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 max-w-full w-max px-4">

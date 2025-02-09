@@ -11,7 +11,7 @@
 
 @font-face {
   font-family: 'Roboto';
-  src: url('app/assets/fonts/Roboto.ttf');
+  src: url('Roboto.ttf') format('truetype');
   font-weight: 100 900;
   font-style: normal;
 }

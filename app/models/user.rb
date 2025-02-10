@@ -13,4 +13,8 @@ class User < ApplicationRecord
   normalizes :email, with: ->(email) { email.strip.downcase }
 
   has_many :sessions, dependent: :destroy
+
+  def name_initials
+    email.first.capitalize
+  end
 end

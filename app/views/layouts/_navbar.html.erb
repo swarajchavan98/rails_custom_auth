@@ -1,16 +1,26 @@
-<header class="flex justify-between items-center dark:text-white fixed p-2 w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
-  <div></div>
-  <nav class="flex justify-between items-center">
+<header class="relative flex justify-between items-center dark:text-white fixed p-2 w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+  <div class="flex-none"></div>
+  <nav class="absolute left-1/2 transform -translate-x-1/2">
     <ul class="flex justify-center items-center gap-2">
-      <%# <li><%= link_to "Home", root_path %></li>
       <li><%= link_to "Dashboard", dashboard_path %></li>
-      <li><%= link_to "Edit password", edit_password_path if Current.user %></li>
-      <li><%= link_to "Sign in", new_session_path %></li>
-      <li><%= link_to "Sign up", new_registration_path %></li>
-      <li><%= link_to "Sign out", session_path, data: { turbo_method: :delete } if Current.user %></li>
     </ul>
   </nav>
-  <div>
+  <div data-controller="dropdown" class="flex-none flex gap-2">
     <%= render "layouts/shared/theme_toggle" %>
+    <% if Current.user %>
+      <button data-action="click->dropdown#toggle" class="flex text-sm rounded-full" type="button" title="Open user dropdown">
+        <span class="sr-only">Open user menu</span>
+        <div class="relative inline-flex items-center justify-center w-8 h-8 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-400 border border-gray-300 ">
+          <span class="font-medium text-gray-600 dark:text-gray-800"><%= Current.user.name_initials %></span>
+        </div>
+      </button>
+
+      <%= render 'layouts/shared/dropdown' do %>
+        <%= link_to "Edit password", edit_password_path, class: "block px-4 py-2 text-gray-700 dark:text-white dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-800" %>
+        <%= link_to "Sign out", session_path, data: { turbo_method: :delete }, class: "block px-4 py-2 text-gray-700 dark:text-white dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-800" %>
+      <% end %>
+    <% else %>
+      <%= link_to "Sign in", new_session_path, class: "cursor-pointer focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" %>
+    <% end %>
   </div>
 </header>

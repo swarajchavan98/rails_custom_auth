@@ -7,7 +7,7 @@
   </nav>
   <div data-controller="dropdown" class="flex-none flex gap-2">
     <%= render "layouts/shared/theme_toggle" %>
-    <% if Current.user %>
+    <% if signed_in? %>
       <button data-action="click->dropdown#toggle" class="flex text-sm rounded-full" type="button" title="Open user dropdown">
         <span class="sr-only">Open user menu</span>
         <div class="relative inline-flex items-center justify-center w-8 h-8 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-400 border border-gray-300 ">
@@ -16,6 +16,7 @@
       </button>
 
       <%= render 'layouts/shared/dropdown' do %>
+        <%= link_to "Subscribe now", subscription_checkout_path, class: "block px-4 py-2 text-gray-700 dark:text-white dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-800" %>
         <%= link_to "Edit password", edit_password_path, class: "block px-4 py-2 text-gray-700 dark:text-white dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-800" %>
         <%= link_to "Sign out", session_path, data: { turbo_method: :delete }, class: "block px-4 py-2 text-gray-700 dark:text-white dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-800" %>
       <% end %>

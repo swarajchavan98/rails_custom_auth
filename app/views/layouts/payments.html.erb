@@ -23,10 +23,9 @@
     <%= javascript_importmap_tags %>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <%= javascript_include_tag "payments.js" %>
-    <%= javascript_include_tag "theme_toggle.js" %>
   </head>
 
-  <body class="dark:bg-black" data-controller="dark-mode">
+  <body class="bg-white dark:bg-black" data-controller="dark-mode">
     <%= render partial: "layouts/navbar" %>
     <main class="container mx-auto mt-28 p-4 flex">
       <%= notice %> 

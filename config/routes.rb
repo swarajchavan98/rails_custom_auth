@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   resource :password_reset, only: %i[new create edit update]
   resource :password, only: %i[edit update]
 
+  resources :organizations
+  resource :organization_selection, only: [ :update ]
+
   namespace :subscription do
     resource :checkout
   end

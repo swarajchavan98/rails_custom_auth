@@ -1,7 +1,7 @@
 module Authentication
   def sign_in(user)
-    session = user.sessions.create!
-    cookies.signed.permanent[:session_id] = { value: session.id, httponly: true }
+    db_session = user.sessions.create!
+    cookies.signed.permanent[:session_id] = { value: db_session.id, httponly: true }
   end
 
   def sign_out
@@ -14,8 +14,9 @@ module Authentication
   end
 
   def restore_authentication
-    if session = session_from_cookies
-      Current.user = session.user
+    if db_session = session_from_cookies
+      Current.user = db_session.user
+      Current.session = db_session
     end
   end
 
@@ -31,5 +32,11 @@ module Authentication
     if restore_authentication
       redirect_to root_path, notice: "You are already signed in"
     end
+  end
+
+  def require_organization
+    return if Current.session.organization.present?
+
+    redirect_to organizations_path, notice: "Please select an organization."
   end
 end

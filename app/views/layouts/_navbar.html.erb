@@ -1,8 +1,13 @@
 <header class="relative flex justify-between items-center dark:text-white fixed p-2 w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
-  <div class="flex-none"></div>
+  <div class="flex-none">
+
+  </div>
   <nav class="absolute left-1/2 transform -translate-x-1/2">
-    <ul class="flex justify-center items-center gap-2">
-      <li><%= link_to "Dashboard", dashboard_path %></li>
+    <ul class="flex justify-center items-center gap-4 font-bold tracking-wide">
+      <li><%= link_to "Home", dashboard_path %></li>
+      <li><%= link_to "Calendar", dashboard_path %></li>
+      <li><%= link_to "Pings", dashboard_path %></li>
+      <li><%= link_to "Message Board", dashboard_path %></li>
     </ul>
   </nav>
   <div data-controller="dropdown" class="flex-none flex gap-2">

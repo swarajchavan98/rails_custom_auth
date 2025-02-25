@@ -1,8 +1,5 @@
 class DashboardsController < ApplicationController
-  before_action :require_authentication
-  before_action :require_organization
+  before_action :require_access
 
-  def show
-    p "Session: #{Current.user.inspect}"
-  end
+  def show; end
 end

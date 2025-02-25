@@ -16,7 +16,8 @@ module Authentication
   def restore_authentication
     if db_session = session_from_cookies
       Current.user = db_session.user
-      Current.session = db_session
+      Current.organization = db_session.organization
+      db_session
     end
   end
 
@@ -35,8 +36,17 @@ module Authentication
   end
 
   def require_organization
-    return if Current.session.organization.present?
+    return if session_from_cookies.organization.present?
 
     redirect_to organizations_path, notice: "Please select an organization."
+  end
+
+  def set_current_organization(organization)
+    session_from_cookies.update!(organization: organization)
+    Current.organization = organization
+  end
+
+  def require_access
+    require_authentication && require_organization
   end
 end
